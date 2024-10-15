@@ -1,4 +1,4 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import image from '../assets/splashscreen.png'
 import { auth } from '../fireBase/firebaseConfig'
@@ -22,6 +22,23 @@ const logout = ()=>{
     console.log("sign out "+error)
   })
 }
+const cart = ()=>{
+  navigation.navigate("Cart")
+}
+const signIn = ()=>{
+  navigation.navigate("Login")
+}
+const singUp = ()=>{
+  navigation.navigate("SignUp")
+}
+const changePassword = ()=>{
+  navigation.navigate('ProfileStack',{ screen :'ChangePassword'})
+}
+const Address = ()=>{
+  navigation.navigate('ProfileStack',{ screen :'Address'})
+}
+
+
 
   return (
     // <>
@@ -34,58 +51,59 @@ const logout = ()=>{
         <View style={styles.constainer}>
           {(auth.currentUser == null) ?
           (<View style={{flex:1,justifyContent : 'center'}}>
-          <View style={styles.section}>
+          <TouchableOpacity style={styles.section} onPress={cart}>
         <Text style={styles.text}>
           Cart
         </Text>
         <Icon name="chevron-forward" type="ionicon" color="#808080"/>
-        </View>
-        <View style={styles.section}>
+        </TouchableOpacity>
+      <TouchableOpacity style={styles.section} onPress={signIn}>
         <Text style={styles.text}>
          Sign in
         </Text>
         <Icon name="chevron-forward" type="ionicon" color="#808080"/>
-        </View>
-        <View style={styles.section}>
+        </TouchableOpacity>
+      <TouchableOpacity style={styles.section} onPress={singUp}>
         <Text style={styles.text}>
          Sign Up
         </Text>
         <Icon name="chevron-forward" type="ionicon" color="#808080"/>
-        </View>
-          </View>) :(<>
+        </TouchableOpacity>
+          </View>
+        ) :(<>
         <View style={styles.image}>
           <Image source={image} style={{width: 150, height: 150, borderRadius: 75}} resizeMode='stretch' />
         </View>
-        <View style={styles.section}>
+      <View style={[styles.section, styles.border]}>
         <Text style={styles.text}>
           {userData?.displayName}
         </Text>
-        <Icon name="chevron-forward" type="ionicon" color="#808080"/>
+        {/* <Icon name="chevron-forward" type="ionicon" color="#808080"/> */}
         </View>
-        <View style={styles.section}>
+      <TouchableOpacity style={styles.section} onPress={changePassword}>
         <Text style={styles.text}>
           Change Password
         </Text>
         <Icon name="chevron-forward" type="ionicon" color="#808080"/>
-        </View>
-        <View style={styles.section}>
+        </TouchableOpacity>
+      <TouchableOpacity style={styles.section} onPress={Address}>
         <Text style={styles.text}>
         Address
         </Text>
         <Icon name="chevron-forward" type="ionicon" color="#808080"/>
-        </View>
-        <View style={styles.section}>
+        </TouchableOpacity>
+      <TouchableOpacity style={styles.section} onPress={cart}>
         <Text style={styles.text}>
         cart
         </Text>
         <Icon name="chevron-forward" type="ionicon" color="#808080"/>
-        </View>
-        <View style={styles.section}>
+        </TouchableOpacity>
+      <TouchableOpacity style={styles.section} onPress={()=>{}}>
         <Text style={styles.text}>
         orders
         </Text>
         <Icon name="chevron-forward" type="ionicon" color="#808080"/>
-        </View>
+        </TouchableOpacity>
         </>)}
         </View>
         {auth.currentUser !=null && <View style={styles.button}>
@@ -130,5 +148,9 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },button:{
     // backgroundColor : 'red',
+  },
+  border:{
+    borderWidth: 0,
+    justifyContent : 'center'
   }
 })

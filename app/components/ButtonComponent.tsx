@@ -1,13 +1,15 @@
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-const ButtonComponent = ({title, onPress} : {title : string,
-    onPress : ()=>void
+const ButtonComponent = ({title, onPress,backgroundColor,fontSize} : {title : string,
+    onPress : ()=>void,
+    backgroundColor? : string,
+    fontSize? :number
 }) => {
   return (
-    <View>
-      <TouchableOpacity style={styles.button} onPress={onPress}>
-        <Text style={styles.text}>{title}</Text>
+    <View style={{flex :1}}>
+      <TouchableOpacity style={[styles.button, { backgroundColor: backgroundColor || '#B9DEEA' }]} onPress={onPress}>
+        <Text style={[styles.text,{fontSize : fontSize || 20}]}>{title}</Text>
       </TouchableOpacity>
     </View>
   )

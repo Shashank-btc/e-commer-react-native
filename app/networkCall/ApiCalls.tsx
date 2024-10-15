@@ -25,6 +25,40 @@ export const getItemList = async (
     }
 }
 
+export const getItemById = async (
+    url: string,
+    id : number
+) : Promise<any> =>{
+    try {
+        const response = await axiosInstance_item_list.get(`${url}/${id}`);
+        return response;
+    } catch (error) {
+        alert(error);
+    }
+}
+export const getCategoryList = async (
+    url: string,
+) : Promise<any> =>{
+    try {
+        // console.log("url ",url)
+        const response = await axiosInstance_item_list.get(url);
+        return response;
+    } catch (error) {
+        alert(error);
+    }
+}
+export const getCategoryByCategory = async (
+    url: string,
+) : Promise<any> =>{
+    try {
+        // console.log("url ",url)
+        const response = await axiosInstance_item_list.get(url);
+        return response;
+    } catch (error) {
+        alert(error);
+    }
+}
+
 export const LoginApi = async(email:string,password: string) : Promise<any> => {
 signInWithEmailAndPassword(auth,email,password)
 .then((userCredential)=>{

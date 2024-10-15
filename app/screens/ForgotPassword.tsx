@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import EditTextComponent from '../components/EditTextComponent'
 import ButtonComponent from '../components/ButtonComponent'
@@ -18,12 +18,14 @@ const ForgotPassword = () => {
   }
   return (
       <View style={styles.container}>
+        <ScrollView style={{justifyContent:'space-between'}}>
         <View style={{paddingTop : 40}}>
           <EditTextComponent isPassword={false} onChangeText={(value) =>{setEmail(value)}} placeHolder='Email' value={email}  label='Enter Email'/>
           </View>
-          <View>
-            <ButtonComponent title='submit' onPress={ForgotPassword}/>
+          <View style={{flex:1, justifyContent:'flex-end'}}>
+            <ButtonComponent title='Submit' onPress={ForgotPassword}/>
             </View>
+            </ScrollView>
     </View>
   )
 }

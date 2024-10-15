@@ -9,6 +9,8 @@ import ForgotPassword from '../../screens/ForgotPassword';
 import ChangePassword from '../../screens/ChangePassword';
 import TabNavigation from '../BottomNavigation.tsx/TabNavigation';
 import HomeStack from './HomeStack';
+import Cart from '../../screens/Cart';
+import ProfileStack, { ProfileStackParamList } from '../ProfileStack';
 
 
 
@@ -27,6 +29,8 @@ export type StackParamList= {
   ForgotPassword : undefined
   ChangePassword : undefined,
   HomeStack : undefined
+  Cart : undefined
+  ProfileStack: { screen: keyof ProfileStackParamList };
 };
 
 const MyStack = () => {
@@ -37,9 +41,8 @@ const MyStack = () => {
         <stack.Screen name='Login' component={Login} options={{headerShown :false}}/>
         <stack.Screen name='SignUp' component={SingUp}/>
         <stack.Screen name='ForgotPassword' component={ForgotPassword} />
-        {/* <stack.Screen name='HomeStack' component={HomeStack}options={{headerShown :false}} /> */}
-        {/* <stack.Screen name='Profile' component={Profile}/> */}
-        {/* <stack.Screen name='ChangePassword' component={ChangePassword} /> */}
+        <stack.Screen name='Cart' component={Cart} />
+        <stack.Screen name="ProfileStack" component={ProfileStack} options={{ headerShown: false }} />
       </stack.Navigator>
   );
 };

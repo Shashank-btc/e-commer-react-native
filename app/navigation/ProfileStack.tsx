@@ -6,15 +6,20 @@ import ChangePassword from '../screens/ChangePassword'
 import AddressScreen from '../screens/AddressScreen'
 import Profile from '../screens/Profile'
 
+
+export type ProfileStackParamList = {
+  ProfileScreen: undefined;   // No params needed
+  ChangePassword: undefined;  // No params needed
+  Address: undefined;   // No params needed, but you can add params if needed
+};
+
 const ProfileStack = () => {
-
-
-    const ProfileStack = createNativeStackNavigator()
+    const ProfileStack = createNativeStackNavigator<ProfileStackParamList>()
   return (
-    <ProfileStack.Navigator screenOptions={{headerShown : false}} initialRouteName='ProileScreen'>
-        <ProfileStack.Screen name='ProileScreen' component={Profile} />
-        <ProfileStack.Screen name='changePassword' component={ChangePassword}/>
-        <ProfileStack.Screen name='AddrssScreen' component={AddressScreen}/>
+    <ProfileStack.Navigator screenOptions={{headerShown : false}} initialRouteName='ProfileScreen'>
+        <ProfileStack.Screen name='ProfileScreen' component={Profile}/>
+        <ProfileStack.Screen name='ChangePassword' component={ChangePassword} options={{headerShown : true}}/>
+        <ProfileStack.Screen name='Address' component={AddressScreen} options={{headerShown : true}}/>
     </ProfileStack.Navigator>
     
   )

@@ -20,15 +20,13 @@ const Login = () => {
 
 
   useEffect(() => {
-    if (isFocused) {
-      console.log("Focused: ", isFocused);
-      console.log("Checking user login: ", JSON.stringify(auth.currentUser));
-
-      if (auth.currentUser !== null && auth.currentUser.uid !== null) {
+    const unSub = auth.onAuthStateChanged((user) =>{
+      if(user){
+        console.log("user : ", user);
         navigation.navigate("TabNavigation"); // Navigate if the user is logged in
       }
-    }
-  }, [isFocused, auth.currentUser]); 
+    })
+  }, []); 
 
   const loginRequest = (email : string, password : string)=>{
     // try{
